@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RYOE Leaderboard</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>RYOE Leaderboard</h1>
+      <p class="subtitle">Every rusher's RYOE stats with an adjustable minimum touches filter.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <div class="control-group">
+        <label for="minTouches"><span class="label">Minimum rush attempts</span>
+          <output id="minTouchesOut" for="minTouches">0</output>
+        </label>
+        <input type="range" id="minTouches" min="0" max="400" value="0" step="1" />
+      </div>
+      <div class="control-group small">
+        <label for="minTouchesNumber">or type a value</label>
+        <input type="number" id="minTouchesNumber" min="0" max="400" value="0" step="1" />
+      </div>
+      <div class="spacer"></div>
+      <div class="summary">
+        <span id="count">0</span> rushers shown
+      </div>
+    </section>
+
+    <section class="table-wrap">
+      <table id="leaderboard">
+        <thead>
+          <tr>
+            <th data-key="rank" class="sticky-col left">#</th>
+            <th data-key="rusher_player_name" class="sticky-col left">Rusher</th>
+            <th data-key="rusher_player_id">Player ID</th>
+            <th data-key="rush_attempts" class="numeric">Rush attempts</th>
+            <th data-key="total_ryoe" class="numeric">RYOE (total)</th>
+            <th data-key="ryoe_per_att" class="numeric">RYOE/att</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- rows injected by JS -->
+        </tbody>
+      </table>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>Data source: <code>dataForWebsite.csv</code>. Derived column RYOE/att = total_ryoe / rush_attempts.</small>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
